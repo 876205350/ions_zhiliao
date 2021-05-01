@@ -1,0 +1,2 @@
+2021/04/23 00:15:29.813 [E] [router.go:910]  template: caiwu/echart_data_list.html:72:20: executing "caiwu/echart_data_list.html" at <.StudentIncress>: can't evaluate field StudentIncress in type caiwu.CaiwuData
+2021/04/24 13:56:57.810 [E] [router.go:910]  template: news/news_list.html:71:20: executing "news/news_list.html" at <.Title>: can't evaluate field Title in type news.News

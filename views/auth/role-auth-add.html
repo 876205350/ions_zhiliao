@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <!--<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>-->
+      <!--<script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>-->
+      <!--会冲突-->
+      <!--<script type="text/javascript" src="./js/xadmin.js"></script>-->
+
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+      <!--[if lt IE 9]>-->
+      <script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+
+      <link rel="stylesheet" href="/static/css/bootstrapStyle/bootstrapStyle.css" type="text/css">
+      <script type="text/javascript" src="/static/js/ztree/jquery.min.js"></script>
+      <script type="text/javascript" src="/static/js/ztree/jquery.ztree.core.js"></script>
+      <script type="text/javascript" src="/static/js/ztree/jquery.ztree.excheck.js"></script>
+      <script type="text/javascript" src="/static/js/ztree/jquery.ztree.exedit.js"></script>
+
+    <!-- [endif]-->
+      <link rel="stylesheet" href="/static/sweetalert/sweetalert.css">
+      <script type="text/javascript" src="/static/sweetalert/ions_alert.js"></script>
+      <script type="text/javascript" src="/static/sweetalert/sweetalert.min.js"></script>
+
+  </head>
+  
+  <body>
+    <div class="x-body">
+        <form class="layui-form" action="" lay-filter="component-form-group">
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色名称</label>
+                <div class="layui-input-inline" style="width:200px;">
+                    <input type="text" value="{{.role.RoleName}}" autocomplete="off" class="layui-input" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色描述</label>
+                <div class="layui-input-inline" style="width:200px;">
+                    <input type="text" value="{{.role.Desc}}" autocomplete="off" class="layui-input" readonly="readonly">
+                </div>
+            </div>
+
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限树</label>
+                <div class="layui-input-block">
+                    <ul id="treeDemo" class="ztree"></ul>
+                </div>
+
+                <input type="hidden" id="role_id" value="{{.role.Id}}">
+                <input type="hidden" id="auth_ids" value="">
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" >
+                            <button class="layui-btn" lay-filter="add" lay-submit id="role_auth_add_btn" type="button">立即提交</button>
+                            <a href="#" class="layui-btn layui-btn-primary">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <SCRIPT type="text/javascript">
+        var role_id = $("#role_id").val();
+        $.ajax({
+            url:"{{urlfor "RoleController.GetAuthJson"}}",
+            data:{"role_id":role_id},
+            type:"GET",
+            success: function(data) {
+                console.log(data);
+                var setting = {
+                    view: {
+                        // addHoverDom: addHoverDom,
+                        // removeHoverDom: removeHoverDom,
+                        selectedMulti: false
+                    },
+                    check: {
+                        enable: true
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true
+                        }
+                    },
+                    edit: {
+                        enable: true
+                    },
+                    callback:{
+                        beforeCheck:true,
+                        onCheck:check_data
+                    }
+                };
+
+                var zNodes = data["auth_arr_map"];
+                var auth_ids_has = data["auth_ids_has"];
+                // [
+                //     {id:1, pId:0, name:"用户管理", open:true},
+                //     {id:101, pId:1, name:"用户列表"},
+                //
+                //     {id:2, pId:0, name:"个人中心", open:false},
+                //     {id:201, pId:2, name:"工资条"},
+                //
+                //
+                //     {id:3, pId:0, name:"财务中心", open:false},
+                //     {id:301, pId:3, name:"工资管理"},
+                //     {id:302, pId:3, name:"财务报表"},
+                //
+                //     {id:4, pId:0, name:"内容管理", open:false},
+                //     {id:401, pId:4, name:"新闻管理"},
+                //     {id:402, pId:4, name:"标签管理"},
+                //
+                //     {id:5, pId:0, name:"车辆管理", open:false},
+                //     {id:501, pId:5, name:"车辆管理"},
+                //     {id:502, pId:5, name:"车辆申请"},
+                //     {id:503, pId:5, name:"车辆审批"},
+                //
+                //     {id:6, pId:0, name:"菜单管理", open:false},
+                //     {id:601, pId:6, name:"菜单列表"},
+                //
+                //     {id:7, pId:0, name:"权限管理", open:false},
+                //     {id:701, pId:7, name:"权限列表"},
+                //     {id:702, pId:7, name:"角色列表"},
+                //
+                //     {id:8, pId:0, name:"报表管理", open:false},
+                //     {id:801, pId:8, name:"财务报表"},
+                //     {id:802, pId:8, name:"业务报表"},
+                //     {id:803, pId:8, name:"课程报表"},
+                // ];
+
+                $(document).ready(function(){
+                    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+                    var zTree = $.fn.zTree.getZTreeObj("treeDemo")
+                    for (var i=0;i<auth_ids_has.length;i++){
+                        var node = zTree.getNodeByParam("id",auth_ids_has[i]);
+                        node.checked = true;
+                        zTree.updateNode(node);
+                        zTree.selectNode(node,true)
+                    }
+                });
+
+            },
+            error:function (data) {
+                alert(data)
+            }
+        });
+        layui.use(['layer'], function() {
+            $ = layui.jquery;
+            var layer = layui.layer;
+            var index = parent.layer.getFrameIndex(window.name);
+            console.log("获得frame索引" + index);
+            $("#role_auth_add_btn").click(function () {
+                var auth_ids = $("#auth_ids").val();
+                $.ajax({
+                    url: "{{urlfor "RoleController.DoRoleAuth"}}",
+                    data: {
+                        "role_id": role_id,
+                        "auth_ids": auth_ids,
+                    },
+                    type: "POST",
+                    success: function (data) {
+                        console.log(data);
+                        var code = data["code"];
+                        if (code == 200) {
+                            layer.msg(data["msg"], {icon: 6}, reload_list);
+                        } else {
+                            ions_alert.alertErrorToast(data["msg"]);
+                        }
+                    },
+                    error: function (data) {
+                        alert(data)
+                    }
+                });
+
+                function reload_list() {
+                    //关闭当前frame\
+                    parent.layer.close(index);
+                    window.location.href = {{urlfor "RoleController.List"}};
+                }
+            });
+        });
+        function check_data() {
+
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            var node = zTree.getCheckedNodes(true);
+            var ids = "";
+            for (var k=0;k<node.length;k++){
+                var id = node[k].id ;
+                if(ids.length==0){
+                    ids = id;
+                }else {
+                    ids = ids + ',' + id;
+                }
+                console.log(id)
+            }
+            console.log(ids);
+            $('#auth_ids').attr('value', ids);
+        }
+
+
+
+    </SCRIPT>
+  </body>
+
+</html>

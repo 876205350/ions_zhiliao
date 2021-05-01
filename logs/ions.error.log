@@ -1,0 +1,4 @@
+2021/04/30 01:09:21.963 [E] [template.go:227]  parse template err: index.html template: index.html:33: function "urlfir" not defined
+2021/04/30 01:09:37.384 [E] [template.go:227]  parse template err: index.html template: index.html:33: function "urlfir" not defined
+2021/04/30 01:11:08.098 [E] [template.go:227]  parse template err: index.html template: index.html:33: function "urlfir" not defined
+2021/04/30 01:11:14.603 [E] [template.go:227]  parse template err: index.html template: index.html:33: function "urlfir" not defined

@@ -1,0 +1,49 @@
+2021/04/29 00:55:21.064 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 00:55:21.064 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 01:00:08.194 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 01:00:08.195 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 01:00:14.310 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 01:00:14.311 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 01:00:18.551 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 01:00:18.551 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 01:00:49.586 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 01:00:49.586 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 01:01:03.965 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 01:01:03.965 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 01:01:10.061 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 01:01:10.061 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 23:13:09.825 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 23:13:09.825 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 23:13:10.623 [D] [router.go:969]  |            ::1|[47m 302 [0m|     2.9964ms| nomatch|[44m GET     [0m /admin/index
+2021/04/29 23:13:10.693 [D] [router.go:969]  |            ::1|[42m 200 [0m|    65.9637ms|   match|[44m GET     [0m /login   r:/login
+2021/04/29 23:13:10.746 [D] [router.go:969]  |            ::1|[42m 200 [0m|    21.9865ms|   match|[44m GET     [0m /static/sweetalert/sweetalert.css
+2021/04/29 23:13:10.777 [D] [router.go:969]  |            ::1|[42m 200 [0m|    51.9707ms|   match|[44m GET     [0m /static/js/xadmin.js
+2021/04/29 23:13:10.782 [D] [router.go:969]  |            ::1|[42m 200 [0m|    56.9718ms|   match|[44m GET     [0m /static/sweetalert/ions_alert.js
+2021/04/29 23:13:10.794 [D] [router.go:969]  |            ::1|[42m 200 [0m|     45.985ms|   match|[44m GET     [0m /static/sweetalert/sweetalert.min.js
+2021/04/29 23:13:10.794 [D] [router.go:969]  |            ::1|[42m 200 [0m|    74.9715ms|   match|[44m GET     [0m /static/css/font.css
+2021/04/29 23:13:10.800 [D] [router.go:969]  |            ::1|[42m 200 [0m|    78.9558ms|   match|[44m GET     [0m /static/css/xadmin.css
+2021/04/29 23:13:10.813 [D] [router.go:969]  |            ::1|[42m 200 [0m|    87.9639ms|   match|[44m GET     [0m /static/lib/layui/layui.js
+2021/04/29 23:13:10.829 [D] [router.go:969]  |            ::1|[42m 200 [0m|     21.976ms|   match|[44m GET     [0m /static/lib/layui/css/layui.css
+2021/04/29 23:13:11.754 [D] [router.go:969]  |            ::1|[42m 200 [0m|    58.9658ms|   match|[44m GET     [0m /static/images/bg.png
+2021/04/29 23:13:11.767 [D] [router.go:969]  |            ::1|[42m 200 [0m|    71.9591ms|   match|[44m GET     [0m /static/images/aiwrap.png
+2021/04/29 23:13:11.777 [D] [router.go:969]  |            ::1|[42m 200 [0m|    23.9879ms|   match|[44m GET     [0m /static/lib/layui/lay/modules/form.js
+2021/04/29 23:13:11.789 [D] [router.go:969]  |            ::1|[42m 200 [0m|     6.0107ms|   match|[44m GET     [0m /static/lib/layui/lay/modules/layer.js
+2021/04/29 23:13:11.808 [D] [router.go:969]  |            ::1|[42m 200 [0m|    12.9946ms|   match|[44m GET     [0m /static/lib/layui/css/modules/layer/default/layer.css
+2021/04/29 23:13:11.817 [D] [router.go:969]  |            ::1|[42m 200 [0m|    17.9916ms|   match|[44m GET     [0m /static/lib/layui/lay/modules/element.js
+2021/04/29 23:13:11.840 [D] [router.go:969]  |            ::1|[42m 200 [0m|    15.9901ms|   match|[44m GET     [0m /static/images/zlkt.ico
+2021/04/29 23:13:11.846 [D] [router.go:969]  |            ::1|[43m 404 [0m|      999.7µs| nomatch|[44m GET     [0m /favicon.ico
+2021/04/29 23:13:25.165 [D] [router.go:969]  |            ::1|[42m 200 [0m|   103.9313ms|   match|[46m POST    [0m /login   r:/login
+2021/04/29 23:13:25.323 [D] [router.go:969]  |            ::1|[42m 200 [0m|   149.9144ms|   match|[44m GET     [0m /admin/index   r:/admin/index
+2021/04/29 23:13:25.369 [D] [router.go:969]  |            ::1|[42m 200 [0m|     2.9993ms|   match|[44m GET     [0m /admin/welcome   r:/admin/welcome
+2021/04/29 23:13:25.397 [D] [router.go:969]  |            ::1|[42m 200 [0m|     5.9929ms|   match|[44m GET     [0m /static/fonts/iconfont.woff
+2021/04/29 23:13:25.455 [D] [router.go:969]  |            ::1|[42m 200 [0m|    10.0084ms|   match|[44m GET     [0m /static/lib/layui/font/iconfont.woff
+2021/04/29 23:13:29.570 [D] [router.go:969]  |            ::1|[42m 200 [0m|   164.9071ms|   match|[44m GET     [0m /admin/cars/my_apply_list   r:/admin/cars/my_apply_list
+2021/04/29 23:13:29.610 [D] [router.go:969]  |            ::1|[42m 200 [0m|     5.9977ms|   match|[44m GET     [0m /static/lib/layui/lay/modules/laydate.js
+2021/04/29 23:13:29.621 [D] [router.go:969]  |            ::1|[42m 200 [0m|     4.9971ms|   match|[44m GET     [0m /static/lib/layui/css/modules/laydate/default/laydate.css
+2021/04/29 23:13:33.132 [D] [router.go:969]  |            ::1|[42m 200 [0m|      8.012ms|   match|[44m GET     [0m /admin/cars/audit_apply_list   r:/admin/cars/audit_apply_list
+2021/04/29 23:25:09.531 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 23:25:09.531 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 23:32:55.743 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 23:32:55.743 [I] [admin.go:447]  Admin server Running on :8088
+2021/04/29 23:39:46.728 [I] [app.go:214]  http server Running on http://:8080
+2021/04/29 23:39:46.728 [I] [admin.go:447]  Admin server Running on :8088
