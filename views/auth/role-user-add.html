@@ -89,7 +89,7 @@
             $("#role_user_select :selected").each(function(){
                 role_user_select_list.push($(this).val());
             });
-            alert(role_user_select_list);
+            // alert(role_user_select_list);
             $.ajax({
                 url:"{{urlfor "RoleController.DoRoleUser"}}",
                 data:{
